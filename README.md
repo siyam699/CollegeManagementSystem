@@ -1,6 +1,25 @@
 # StudentPortal
 
+## Instructions
+- Clone the repository
+- npm install
+- npm audit fix
+- Open two terminals
+- json-server --watch db.json (on one of the terminals)
+- ng serve --open (on the other terminal)
+  
+- **USERNAME** = admin <br>
+- **PASSWORD** = 1234 <br>
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.1.
+
+## Screenshots
+![Picture1](https://github.com/user-attachments/assets/3f55c328-6720-4562-afae-de17bc01bee5)
+![Picture2](https://github.com/user-attachments/assets/974ced95-c1bd-419f-a113-1eed74a039fd)
+![Picture3](https://github.com/user-attachments/assets/04d2d3a3-1cc5-4cd3-8e8b-6306eddb23d1)
+![Picture4](https://github.com/user-attachments/assets/bc0add86-b92d-450b-8886-fc56d06a76c5)
+![Picture5](https://github.com/user-attachments/assets/3427e9f5-ae20-4649-8257-af8dc18316af)
+![Picture6](https://github.com/user-attachments/assets/d9656b94-72b6-43fc-a31f-238246562c69)
 
 ## Development server
 
