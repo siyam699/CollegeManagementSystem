@@ -1,0 +1,60 @@
+{
+  "teacherdata": [
+    {
+      "id": "1",
+      "obj_id": 1,
+      "name": "Ibrahim",
+      "mobile": "1909391",
+      "email": "ibrahim99@yahoo.com",
+      "gender": "lecturer",
+      "dob": "2024-10-02",
+      "address": "Ibrahimpur",
+      "status": true
+    },
+    {
+      "id": "2",
+      "name": "rakib",
+      "email": "rakibcybersec@gmail.com",
+      "address": "Bashundhara",
+      "gender": "dean",
+      "mobile": "01923919232",
+      "dob": "2024-10-16",
+      "status": false
+    }
+  ],
+  "studentdata": [
+    {
+      "id": "2",
+      "obj_id": 2,
+      "name": "safu",
+      "mobile": "019138193",
+      "email": "safwan55.ah@gmail.com",
+      "gender": "male",
+      "doj": "2011-02-14",
+      "address": "Kazipara",
+      "status": false
+    },
+    {
+      "id": "4",
+      "obj_id": 4,
+      "name": "anika",
+      "mobile": "0189325964",
+      "email": "rubya@gmail.com",
+      "gender": "female",
+      "doj": "2024-10-02",
+      "address": "Barishal",
+      "status": false
+    },
+    {
+      "id": "3",
+      "obj_id": 3,
+      "name": "Safu",
+      "mobile": "01886596401",
+      "email": "mdsiyam.ah203@gmail.com",
+      "gender": "male",
+      "doj": "2024-10-31",
+      "address": "Dhaka",
+      "status": true
+    }
+  ]
+}

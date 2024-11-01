@@ -1,0 +1,16 @@
+
+.header{
+    /* background: linear-gradient(135deg, #007aa7, black); */
+    padding: 10px;
+}
+.card{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 10px;
+}.card-header{
+    background: linear-gradient(120deg,  black, #007aa7);
+    color: white;
+}
+.modal-header{
+    background: linear-gradient( black, #007aa7);
+    color: white;
+}

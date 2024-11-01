@@ -1,0 +1,286 @@
+<!-- <div class="parent"
+ style="background-image: url('https://images.pexels.com/photos/3214110/pexels-photo-3214110.jpeg');"> -->
+ <div class="parent"
+ style="background-image: url('assets/blurbook.jpg');">
+<!-- <img src="'https://images.pexels.com/photos/2387793/pexels-photo-2387793.jpeg?cs=srgb&dl=pexels-adrien-olichon-1257089-2387793.jpg&fm=jpg'" alt=""> -->
+<h1 style="background: linear-gradient(135deg, #007aa7, black); text-align: center;">--IDB COLLEGE PORTAL--</h1>
+<div class="container-fluid">
+    <div class="row header">
+        <div class="col-6">
+            <h3 class="text-white r" id="logoText">[__ STUDENTS PORTAL __]</h3>
+        </div>
+
+        <div class="col-6 text-end">
+            <button class="btn btn-outline-danger" (click)="seeTeachers()"><b>Switch Portal</b></button> &nbsp;
+            <button class="btn btn-outline-info" (click)="openStudentModel()"><b>Add Student</b></button> &nbsp;
+            <button class="btn btn-outline-info" (click)="openTeacherModel()"><b>Add Teacher</b></button>
+            <!-- <button class="btn btn-outline-danger" (click)="logout()">Logout</button> -->
+        </div>
+    </div>
+    <hr>
+
+      <h4 class="text-white text-center" id="welcomeText" >Welcome To Student Portal</h4>
+
+
+    <marquee behavior="scroll" direction="" id="marqueeText"><b><i> Please Insert, Update or Delete Student Data</i></b></marquee>
+    <hr>
+
+    <div class="row" id="studentRow">
+        @for (std of students; track $index) {
+        <div class="col-3">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-6">
+                            {{ std.name | uppercase }}
+                        </div>
+                        <div class="col-6 text-end">
+                            {{std.mobile}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <p> <b>Email : </b><span style="float: right;">{{ std.email }}</span> </p>
+                    <p><span><b>Gender: </b>{{ std.gender | titlecase }}</span><span style="float: right;"><b>DOB :
+                            </b>{{ std.doj
+                            }}</span></p>
+                    <p><b>Address : </b><span style="float: right;">{{ std.address }}</span></p>
+                    <p><b>Status : </b><span style="float: right;">{{ std.status ? 'Active' : 'InActive'}}</span></p>
+                </div>
+
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-6">
+                            <i (click)="onEditStudetn(std)" class="btn fa fa-edit text-primary"
+                                style="font-size: 25px;"></i>
+                        </div>
+                        <div class="col-6 text-end">
+                            <i (click)="onDeleteStudent(std)" class="btn fa fa-trash text-danger"
+                                style="font-size: 25px;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        }
+
+    </div>
+    <div class="row" id="teacherRow" style="display: none;">
+      @for (tch of teachers; track $index) {
+      <div class="col-3">
+          <div class="card">
+              <div class="card-header">
+                  <div class="row">
+                      <div class="col-6">
+                          {{ tch.name | uppercase }}
+                      </div>
+                      <div class="col-6 text-end">
+                          {{tch.mobile}}
+                      </div>
+                  </div>
+              </div>
+
+              <div class="card-body">
+                  <p> <b>Email : </b><span style="float: right;">{{ tch.email }}</span> </p>
+                  <p><span><b>Title: </b>{{ tch.gender | titlecase }}</span><span style="float: right;"><b>DOB :
+                          </b>{{ tch.dob
+                          }}</span></p>
+                  <p><b>Address : </b><span style="float: right;">{{ tch.address }}</span></p>
+                  <p><b>Status : </b><span style="float: right;">{{ tch.status ? 'Permanent' : 'Contractual'}}</span></p>
+              </div>
+
+              <div class="card-footer">
+                  <div class="row">
+                      <div class="col-6">
+                          <i (click)="onEditTeacher(tch)" class="btn fa fa-edit text-primary"
+                              style="font-size: 25px;"></i>
+                      </div>
+                      <div class="col-6 text-end">
+                          <i (click)="onDeleteTeacher(tch)" class="btn fa fa-trash text-danger"
+                              style="font-size: 25px;"></i>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      }
+    <br>
+</div>
+<br>
+<div class="text-center">
+  <button class="btn btn-outline-danger col-3" (click)="logout()"><b>Logout</b></button>
+</div>
+
+<hr>
+<marquee behavior="scroll" direction="">Developed By MD SIYAM</marquee>
+<hr>
+
+<div class="modal" id="myTeacherModal" #myTeacherModal>
+  <div class="modal-dialog">
+      <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+              @if(teacherObj.obj_id == 0)
+              {
+              <h4 class="modal-title">Add Teacher</h4>
+              }
+              @else {
+              <h4 class="modal-title">Update Teacher</h4>
+              }
+
+              <button type="button" class="btn-close" (click)="closeTeacherModel()"></button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+              <div class="row">
+                  <div class="col-12">
+                      <input type="text" [(ngModel)]="teacherObj.name" class="form-control" placeholder="Name"
+                          name="name">
+                  </div>
+              </div>
+              <div class="row mt-3">
+                  <div class="col-6">
+                      <input type="text" [(ngModel)]="teacherObj.email" class="form-control" placeholder="Email"
+                          name="email">
+                  </div>
+                  <div class="col-6">
+                      <input type="text" [(ngModel)]="teacherObj.mobile" class="form-control" placeholder="Mobile"
+                          name="mobile">
+                  </div>
+              </div>
+              <div class="row mt-3">
+                  <div class="col-6">
+                      <select class="form-control" [(ngModel)]="teacherObj.gender">
+                          <option value="">Select Designation</option>
+                          <option value="lecturer">Lecturer</option>
+                          <option value="proffesor">Proffesor</option>
+                          <option value="dean">Dean</option>
+                      </select>
+                  </div>
+                  <div class="col-6">
+                      <input type="date" [(ngModel)]="teacherObj.dob" class="form-control" placeholder="DOB"
+                          name="dob">
+                  </div>
+              </div>
+              <div class="row mt-3">
+                  <div class="col-12">
+                      <textarea cols="5" rows="3" [(ngModel)]="teacherObj.address" type="text" placeholder="Address"
+                          class="form-control"></textarea>
+                  </div>
+              </div>
+              <div class="row mt-3">
+                  <div class="col-12">
+                      <div class="form-group form-check">
+                          <input type="checkbox" [(ngModel)]="teacherObj.status" class="form-check-input">
+                          <label> Permanent</label>
+                      </div>
+                  </div>
+              </div>
+
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+              <button type="button" class="btn btn-danger" (click)="closeTeacherModel()">Close</button>
+              @if(teacherObj.obj_id == 0)
+              {
+              <button type="button" class="btn btn-primary" (click)="onSaveTeacherForm()">Save</button>
+              }
+              @else{
+              <button type="button" class="btn btn-primary" (click)="onUpdateTeacherForm()">Update</button>
+              }
+
+          </div>
+
+      </div>
+  </div>
+</div>
+
+
+<div class="modal" id="myModal" #myModal>
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                @if(studentObj.obj_id == 0)
+                {
+                <h4 class="modal-title">Add Student</h4>
+                }
+                @else {
+                <h4 class="modal-title">Update Student</h4>
+                }
+
+                <button type="button" class="btn-close" (click)="closeMedel()"></button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <input type="text" [(ngModel)]="studentObj.name" class="form-control" placeholder="Name"
+                            name="name">
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <input type="text" [(ngModel)]="studentObj.email" class="form-control" placeholder="Email"
+                            name="email">
+                    </div>
+                    <div class="col-6">
+                        <input type="text" [(ngModel)]="studentObj.mobile" class="form-control" placeholder="Mobile"
+                            name="mobile">
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-6">
+                        <select class="form-control" [(ngModel)]="studentObj.gender">
+                            <option value="">Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                    <div class="col-6">
+                        <input type="date" [(ngModel)]="studentObj.doj" class="form-control" placeholder="DOJ"
+                            name="doj">
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <textarea cols="5" rows="3" [(ngModel)]="studentObj.address" type="text" placeholder="Address"
+                            class="form-control"></textarea>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div class="form-group form-check">
+                            <input type="checkbox" [(ngModel)]="studentObj.status" class="form-check-input">
+                            <label> Active</label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="closeMedel()">Close</button>
+                @if(studentObj.obj_id == 0)
+                {
+                <button type="button" class="btn btn-primary" (click)="onSaveform()">Save</button>
+                }
+                @else{
+                <button type="button" class="btn btn-primary" (click)="onUpdateform()">Update</button>
+                }
+
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>

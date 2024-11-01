@@ -1,0 +1,26 @@
+<div class="parent">
+    <!-- <img src="https://i.postimg.cc/MTRK7Thf/bg-form.jpg" alt=""> -->
+    <!-- <img src="https://images2.alphacoders.com/720/720843.jpg" alt=""> -->
+    <!-- <img src="https://cdn1.epicgames.com/ue/product/Screenshot/67676767676-1920x1080-88f6dfe0556038a2112d62d336e418e2.jpg?resize=1&w=1920" alt=""> -->
+    <img src="assets/login.png" alt="">
+    <div class="container">
+        <form  [formGroup]="userForm">
+            <h1 class="text-center">Login</h1>
+            <div class="input-box">
+              Username<input type="email" formControlName="username" placeholder="Username" >
+                <i class='bx bx-envelope'></i>
+            </div>
+
+            <div class="input-box">
+                Password<input type="password" formControlName="password" placeholder="Password">
+                <i class='bx bx-lock-alt' ></i>
+            </div>
+            <div class="remember">
+                <label for="#">
+                    <input type="checkbox"> Remember me
+                </label>
+            </div>
+            <button class="btn" (click)="onLogin()">Login</button>
+        </form>
+    </div>
+</div>
