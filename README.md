@@ -1,5 +1,5 @@
 # StudentPortal
-
+- CREATED BY [SafuGit](https://github.com/SafuGit)
 ## Instructions
 - Clone the repository
 - npm install
